@@ -186,6 +186,7 @@
 		185664931B424694009EF2AE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 185664921B424694009EF2AE /* Cocoa.framework */; };
 		185664941B4246BA009EF2AE /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ABCA28918CD91510087CE3A /* AppKit.framework */; };
 		185664951B4246C9009EF2AE /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A035A71117822E9E00987F6C /* libsqlite3.dylib */; };
+		18E5CF8A1E9E832900BB5624 /* Python.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E5CF891E9E832900BB5624 /* Python.framework */; };
 		18FC4D5F1B4257CD00B76F95 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18FC4D5E1B4257CD00B76F95 /* libsqlite3.dylib */; };
 		1A0EE2A218CDF6DA004CD58F /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46A15FB01807A4F9005B8026 /* libcocos2d Mac.a */; };
 		1A0EE2A518CDF6DA004CD58F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCC747E17C455FD007B692C /* IOKit.framework */; };
@@ -1890,6 +1891,8 @@
 		185664481B423047009EF2AE /* Test_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_Prefix.pch; sourceTree = "<group>"; };
 		185664541B42364E009EF2AE /* script */ = {isa = PBXFileReference; lastKnownFileType = folder; name = script; path = "../cocos/scripting/js-bindings/script"; sourceTree = "<group>"; };
 		185664921B424694009EF2AE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		18E5CF891E9E832900BB5624 /* Python.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Python.framework; path = System/Library/Frameworks/Python.framework; sourceTree = SDKROOT; };
+		18E5CF8B1E9E846000BB5624 /* main.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = main.py; path = ../script/main.py; sourceTree = "<group>"; };
 		18FC4D5E1B4257CD00B76F95 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libsqlite3.dylib; sourceTree = DEVELOPER_DIR; };
 		1A0EE2B218CDF6DA004CD58F /* cpp-empty-test Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cpp-empty-test Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A0EE31418CDF733004CD58F /* lua-empty-test Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lua-empty-test Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2818,6 +2821,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E5CF8A1E9E832900BB5624 /* Python.framework in Frameworks */,
 				ED545A6D1B68A18300C3958E /* libiconv.dylib in Frameworks */,
 				1AAF534D180E2F4E000584C8 /* libcocos2d Mac.a in Frameworks */,
 				826294431AAF071500CB7CF7 /* Security.framework in Frameworks */,
@@ -3223,6 +3227,14 @@
 			);
 			name = proj.mac;
 			path = "../tests/js-tests/project/proj.mac";
+			sourceTree = "<group>";
+		};
+		18E5CF871E9E7A8E00BB5624 /* script */ = {
+			isa = PBXGroup;
+			children = (
+				18E5CF8B1E9E846000BB5624 /* main.py */,
+			);
+			name = script;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -4744,6 +4756,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				18E5CF871E9E7A8E00BB5624 /* script */,
 				185663081B41511B009EF2AE /* cocos2d_js_bindings.xcodeproj */,
 				46A15F9C1807A4F8005B8026 /* cocos2d_libs.xcodeproj */,
 				1ABCA27618CD90A40087CE3A /* cocos2d_lua_bindings.xcodeproj */,
@@ -4758,6 +4771,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18E5CF891E9E832900BB5624 /* Python.framework */,
 				29DC5A1E1CFFE5E700CF2930 /* CoreText.framework */,
 				4B5C5BB41CA114DB00D55A14 /* Security.framework */,
 				4B5C5BAA1CA1149900D55A14 /* Security.framework */,
@@ -5485,6 +5499,7 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				18E5CF881E9E7DC800BB5624 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -6592,6 +6607,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\ncocos_dir=${SRCROOT}/../tests/js-tests/res\nif [ -d \"${cocos_dir}\" ]; then\nrm -rv \"${cocos_dir}\"\nmkdir \"${cocos_dir}\"\nelse\nmkdir \"${cocos_dir}\"\nfi\n\ncp -r \"${SRCROOT}/../tests/cpp-tests/Resources/\" \"${cocos_dir}\"\ncp -r \"${SRCROOT}/../tests/js-tests/resjs/\" \"${cocos_dir}/resjs\"";
+		};
+		18E5CF881E9E7DC800BB5624 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /usr/bin/python;
+			shellScript = "";
 		};
 		507B42831C31E6070067B53E /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

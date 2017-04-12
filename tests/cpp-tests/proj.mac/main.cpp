@@ -23,11 +23,19 @@
  ****************************************************************************/
 
 #include "AppDelegate.h"
-
+#include <Python/Python.h>
 USING_NS_CC;
 
 int main(int argc, char *argv[])
 {
+    Py_Initialize();
+    PyRun_SimpleString("import sys");
+    PyRun_SimpleString("sys.path.append('/Users/apple/Downloads/cocos2d-x-3.12/script')");
+    PyRun_SimpleString("import main");
+    PyObject* pModule = PyImport_ImportModule("main");
+    PyObject* pFunc = PyObject_GetAttrString(pModule, "test");
+    PyEval_CallObject(pFunc, NULL);
     AppDelegate app;
     return Application::getInstance()->run();
+    Py_Finalize();
 }
